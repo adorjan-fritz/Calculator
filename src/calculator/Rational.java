@@ -17,8 +17,8 @@ public class Rational {
     private int nevezo;
     
     Rational(int szamlalo, int nevezo) {
-        //if (0 == nevezo) 
-        //    throw new Exception();
+        if (0 == nevezo) 
+            throw new IllegalArgumentException("A nevező nem lehet 0");
         if (nevezo < 0) {
             szamlalo*=(-1);
             nevezo*=(-1);
@@ -40,6 +40,10 @@ public class Rational {
             nev*=10;
         }
         return new Rational(((int)d),nev);
+    }
+    
+    public static double RationalToDouble(Rational r) {
+        return (1.0*r.szamlalo/r.nevezo);
     }
     
     public Rational addition(Rational a) {        
